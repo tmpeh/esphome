@@ -699,12 +699,12 @@ class WaveshareEPaper7P5InV2P : public WaveshareEPaper {
   void dump_config() override;
 
   void deep_sleep() override {
-      // COMMAND POWER OFF
-      this->command(0x02);
-      this->wait_until_idle_();
-      // COMMAND DEEP SLEEP
-      this->command(0x07);
-      this->data(0xA5);  // check byte
+    // COMMAND POWER OFF
+    this->command(0x02);
+    this->wait_until_idle_();
+    // COMMAND DEEP SLEEP
+    this->command(0x07);
+    this->data(0xA5);  // check byte
   }
 
   void set_full_update_every(uint32_t full_update_every);

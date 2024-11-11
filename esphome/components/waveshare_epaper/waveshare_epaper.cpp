@@ -2649,7 +2649,7 @@ bool WaveshareEPaper7P5InV2P::wait_until_idle_() {
       return false;
     }
     App.feed_wdt();
-    delay(10); // NOLINT
+    delay(10);  // NOLINT
   }
   return true;
 }
@@ -2657,17 +2657,17 @@ bool WaveshareEPaper7P5InV2P::wait_until_idle_() {
 void WaveshareEPaper7P5InV2P::reset_() {
   if (this->reset_pin_ != nullptr) {
     this->reset_pin_->digital_write(true);
-    delay(20); // NOLINT
+    delay(20);  // NOLINT
     this->reset_pin_->digital_write(false);
-    delay(2); // NOLINT
+    delay(2);  // NOLINT
     this->reset_pin_->digital_write(true);
-    delay(20); // NOLINT
+    delay(20);  // NOLINT
   }
 }
 
 void WaveshareEPaper7P5InV2P::turn_on_display_() {
   this->command(0x12);
-  delay(100); // NOLINT
+  delay(100);  // NOLINT
   this->wait_until_idle_();
 }
 
@@ -2690,7 +2690,7 @@ void WaveshareEPaper7P5InV2P::initialize() {
 
   // COMMAND POWER DRIVER HAT UP
   this->command(0x04);
-  delay(100); // NOLINT
+  delay(100);  // NOLINT
   this->wait_until_idle_();
 
   // COMMAND PANEL SETTING
@@ -2734,7 +2734,7 @@ void HOT WaveshareEPaper7P5InV2P::display() {
   ESP_LOGI(TAG, "Power on the display and hat");
 
   this->command(0x04);
-  delay(200); // NOLINT
+  delay(200);  // NOLINT
   this->wait_until_idle_();
 
   if (this->full_update_every_ == 1) {
@@ -2762,21 +2762,21 @@ void HOT WaveshareEPaper7P5InV2P::display() {
     this->command(0x92);
 
     this->command(0x10);
-    delay(2); // NOLINT
+    delay(2);  // NOLINT
     for (uint32_t i = 0; i < buf_len; i++) {
       this->data(~(this->buffer_[i]));
     }
 
-    delay(100); // NOLINT
+    delay(100);  // NOLINT
     this->wait_until_idle_();
 
     this->command(0x13);
-    delay(2); // NOLINT
+    delay(2);  // NOLINT
     for (uint32_t i = 0; i < buf_len; i++) {
       this->data(this->buffer_[i]);
     }
 
-    delay(100); // NOLINT
+    delay(100);  // NOLINT
     this->wait_until_idle_();
 
     this->turn_on_display_();
@@ -2803,12 +2803,12 @@ void HOT WaveshareEPaper7P5InV2P::display() {
     this->data(0x01);
 
     this->command(0x13);
-    delay(2); // NOLINT
+    delay(2);  // NOLINT
     for (uint32_t i = 0; i < buf_len; i++) {
       this->data(this->buffer_[i]);
     }
 
-    delay(100); // NOLINT
+    delay(100);  // NOLINT
     this->wait_until_idle_();
 
     this->turn_on_display_();

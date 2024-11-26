@@ -2649,7 +2649,7 @@ bool WaveshareEPaper7P5InV2P::wait_until_idle_() {
       return false;
     }
     App.feed_wdt();
-    delay(10);  // NOLINT
+    delay(10);
   }
   return true;
 }
@@ -2657,11 +2657,11 @@ bool WaveshareEPaper7P5InV2P::wait_until_idle_() {
 void WaveshareEPaper7P5InV2P::reset_() {
   if (this->reset_pin_ != nullptr) {
     this->reset_pin_->digital_write(true);
-    delay(20);  // NOLINT
+    delay(20);
     this->reset_pin_->digital_write(false);
-    delay(2);  // NOLINT
+    delay(2);
     this->reset_pin_->digital_write(true);
-    delay(20);  // NOLINT
+    delay(20);
   }
 }
 
@@ -2762,7 +2762,7 @@ void HOT WaveshareEPaper7P5InV2P::display() {
     this->command(0x92);
 
     this->command(0x10);
-    delay(2);  // NOLINT
+    delay(2);
     for (uint32_t i = 0; i < buf_len; i++) {
       this->data(~(this->buffer_[i]));
     }
@@ -2771,7 +2771,7 @@ void HOT WaveshareEPaper7P5InV2P::display() {
     this->wait_until_idle_();
 
     this->command(0x13);
-    delay(2);  // NOLINT
+    delay(2);
     for (uint32_t i = 0; i < buf_len; i++) {
       this->data(this->buffer_[i]);
     }
@@ -2803,7 +2803,7 @@ void HOT WaveshareEPaper7P5InV2P::display() {
     this->data(0x01);
 
     this->command(0x13);
-    delay(2);  // NOLINT
+    delay(2);
     for (uint32_t i = 0; i < buf_len; i++) {
       this->data(this->buffer_[i]);
     }
@@ -2827,7 +2827,7 @@ int WaveshareEPaper7P5InV2P::get_height_internal() { return 480; }
 uint32_t WaveshareEPaper7P5InV2P::idle_timeout_() { return 10000; }
 void WaveshareEPaper7P5InV2P::dump_config() {
   LOG_DISPLAY("", "Waveshare E-Paper", this);
-  ESP_LOGCONFIG(TAG, "  Model: 7.5inV2rev2");
+  ESP_LOGCONFIG(TAG, "  Model: 7.50inv2p");
   ESP_LOGCONFIG(TAG, "  Full Update Every: %" PRIu32, this->full_update_every_);
   LOG_PIN("  Reset Pin: ", this->reset_pin_);
   LOG_PIN("  DC Pin: ", this->dc_pin_);
